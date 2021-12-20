@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container,Row, Col, Form, Button } from 'react-bootstrap';
 import PropTypes from "prop-types";
-export const LoginForm = ({handleOnChange, handleOnSubmit ,email ,pass}) => {
+export const LoginForm = ({handleOnChange, handleOnSubmit ,email, formSwitcher ,pass}) => {
     return (
     <Container>
         <Row>
@@ -39,14 +39,16 @@ export const LoginForm = ({handleOnChange, handleOnSubmit ,email ,pass}) => {
                                />
                          
                        </Form.Group>
+                       <hr/>
                        <Button type="submit">Login</Button>
                    </Form>
 
                       <hr/>
             </Col>
         </Row>
+
         <Col>
-        <a href="#!">Forget Password?</a>
+        <a href="#!" onClick={()=> formSwitcher('reset')}>Forget Password?</a>
         </Col> 
 
     </Container>
@@ -57,6 +59,7 @@ export const LoginForm = ({handleOnChange, handleOnSubmit ,email ,pass}) => {
     LoginForm.propTypes={
         handleOnChange: PropTypes.func.isRequired,
         handleOnSubmit: PropTypes.func.isRequired,
+        formSwitcher:PropTypes.func.isRequired,
         email: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
     }

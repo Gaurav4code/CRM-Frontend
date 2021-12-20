@@ -33,17 +33,32 @@ export const Entry = () => {
 
         console.log(email,password);
     };
-  
+     
+     const handleOnResetSubmit = (e) =>{
+        e.preventDefault();
+
+        if ( !email){
+           return  alert("Please enter email");
+        }
+        console.log(email);
+     }
+   const formSwitcher = (frmType) =>{
+      setFrmLoad(frmType);
+   }
     return (
         <div className='entry-page bg-info'>
               <div className='card-sec' >  
                { frmLoad === 'login' && <LoginForm handleOnChange={handleOnChange}
                 handleOnSubmit={handleOnSubmit}
+                formSwitcher={formSwitcher}
                 email={email}
-                pass={password}/>  }
+                pass={password}
+                />  }
 
                 {frmLoad === 'reset' && <ResetPassword handleOnChange={handleOnChange}
-                handleOnSubmit={handleOnSubmit}
+
+                handleOnResetSubmit={handleOnResetSubmit}
+                formSwitcher={formSwitcher}
                 email={email}
               /> }
               </div>      
